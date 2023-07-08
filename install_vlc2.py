@@ -34,7 +34,7 @@ def get_expected_sha256():
             if 'vlc-3.0.17.4-win64.exe' in line:
                 expected_sha256 = line.split()[0]
                 return expected_sha256
-    
+        return None
 
 def download_installer():
     url = 'http://download.videolan.org/pub/videolan/vlc/3.0.17.4/win64/vlc-3.0.17.4-win64.exe'
@@ -42,7 +42,7 @@ def download_installer():
     if response.status_code == requests.codes.ok:
         installer_data = response.content
         return installer_data
-   
+    return None
 
 def installer_ok(installer_data, expected_sha256):
     if installer_data is not None:
